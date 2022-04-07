@@ -1,3 +1,5 @@
+#!groovy
+
 pipeline {
     agent any
 
@@ -59,9 +61,11 @@ pipeline {
             steps {
                 echo 'stage 01'
                 // sh 'maven --version'
-                sh 'echo ${PERSON}'
-                sh 'echo ${LOCAL_ENV}'
-                sh 'printenv'
+                sh """
+                    echo ${PERSON}
+                    echo ${LOCAL_ENV}
+                    printenv
+                """
             }
         }
         stage('02') {
